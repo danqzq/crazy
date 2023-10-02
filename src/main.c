@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "bugprone-integer-division"
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
@@ -46,6 +43,9 @@ typedef struct {
 
     int type;
     bool isEnraged;
+
+    float throwTimer;
+    Vector2 throwPosition;
 } Rat;
 
 #pragma endregion
@@ -119,6 +119,7 @@ static float sanity = 100.0f;
 static float cheese = 100.0f;
 static float health = 100.0f;
 static float flashlight = 100.0f;
+static Rat* currentRatOnPlayer = NULL;
 
 static Rat* enemies;
 static int enemiesCount = 0;
@@ -133,6 +134,9 @@ static Rat* currentRatOnPowerGenerator = NULL;
 static float powerGeneratorTimer = 0.0f;
 
 static Entity* electricityParticles;
+static Entity* mutateParticles;
+static int mutateParticlesCount = 0;
+static float mutateParticlesTimer = 0.0f;
 
 static Entity fatRat;
 static float fatRatTimer = 0.0f;
@@ -322,13 +326,17 @@ void ResetLevel(void) {
     sanity = 100.0f;
     health = 100.0f;
     flashlight = 100.0f;
+
     numberOfRatsFed = 0;
     isFatRatSpawned = false;
     fatRatTimer = 0.0f;
+    fatRatTeethPosition = 0.0f;
+
     screenFlickerTimer = SCREEN_FLICKER_TIME;
     enemies = realloc(enemies, 0);
     currentDraggedRat = NULL;
     currentRatOnPowerGenerator = NULL;
+    currentRatOnPlayer = NULL;
 
     player.position = (Vector2) { 400.0f, 400.0f };
     cheeseEntity.position = (Vector2) { SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f };
@@ -345,9 +353,17 @@ void UpdateCutscenes(void) {
         DrawTexturePro(cutscenes[0], (Rectangle) { 0, 0, cutscenes[0].width, cutscenes[0].height },
                        (Rectangle) { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT },
                        (Vector2) { 0, 0 }, 0, (Color) { 255, 255, 255, min(cutsceneTimer * 255, 255) });
+        DrawRectanglePro((Rectangle) { 0, SCREEN_HEIGHT * 0.5f, SCREEN_WIDTH, SCREEN_HEIGHT * 0.5f },
+                         (Vector2) { 0, 0 }, 0, (Color) { 0, 0, 0, clamp(255 * 2 - cutsceneTimer * 255, 0, 255) });
+        DrawRectanglePro((Rectangle) { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT },
+                         (Vector2) { 0, 0 }, 0, (Color) { 0, 0, 0, clamp(cutsceneTimer * 255 - 255 * 4, 0, 255) });
         DrawTexturePro(cutscenes[1], (Rectangle) { 0, 0, cutscenes[1].width, cutscenes[1].height },
                        (Rectangle) { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT },
                        (Vector2) { 0, 0 }, 0, (Color) { 255, 255, 255, clamp(cutsceneTimer * 255 - 255 * 5, 0, 255) });
+        if (cutsceneTimer >= 5.0f) {
+            DrawRectanglePro((Rectangle) {0, SCREEN_HEIGHT * 0.5f, SCREEN_WIDTH, SCREEN_HEIGHT * 0.5f},
+                             (Vector2) {0, 0}, 0, (Color) {0, 0, 0, clamp(255 * 8 - cutsceneTimer * 255, 0, 255)});
+        }
         return;
     }
 
@@ -464,6 +480,29 @@ void UpdatePlayer(void) {
                        (Vector2) {w * 0.25f, h * 0.25f}, player.rotation - 90, WHITE);
     }
 
+    if (currentRatOnPlayer != NULL) {
+        Entity* entity = currentRatOnPlayer->entity;
+        w = entity->scale.x * SCALE_FACTOR + 25;
+        h = entity->scale.y * SCALE_FACTOR + 25;
+        sourceRec = (Rectangle) { (currentRatOnPlayer->type - 1) * 256, 0, ratTextureSpritesheet.width / 4.0f, ratTextureSpritesheet.height };
+
+        DrawTexturePro(ratTextureSpritesheet, sourceRec,
+                       (Rectangle) { player.position.x, player.position.y, w, h },
+                       (Vector2) { w * 0.5f, h * 0.5f }, player.rotation - 90 + sinf(GetTime() * 20) * 50, WHITE);
+
+        health -= 10 * GetFrameTime();
+
+        if (IsKeyPressed(KEY_SPACE))
+        {
+            Vector2 position = (Vector2) { 0, 0 };
+            position.x = player.position.x + cosf((player.rotation - 90) * PI / 180) * 300;
+            position.y = player.position.y + sinf((player.rotation - 90) * PI / 180) * 300;
+            currentRatOnPlayer->throwPosition = position;
+            currentRatOnPlayer->throwTimer = 0.5f;
+            currentRatOnPlayer = NULL;
+        }
+    }
+
     if (!isCheeseDragged) {
         w = cheeseTexture.width * 0.125f;
         h = cheeseTexture.height * 0.125f;
@@ -548,6 +587,8 @@ void UpdateRatSpawner() {
     rat->entity->rotation = 0.0f;
     rat->entity->scale = (Vector2) { 0.5f, 0.5f };
     rat->entity->velocity = (Vector2) { 0.0f, 0.0f };
+    rat->throwTimer = 0.0f;
+    rat->throwPosition = (Vector2) { 0.0f, 0.0f };
 }
 
 void UpdateRats(void) {
@@ -555,7 +596,23 @@ void UpdateRats(void) {
     for (int i = 0; i < enemiesCount; i++) {
         Rat* rat = &enemies[i];
         Entity* entity = rat->entity;
-        if (rat == currentDraggedRat) {
+        if (rat == currentDraggedRat || rat == currentRatOnPlayer) {
+            continue;
+        }
+        if (rat->throwTimer > 0.0f) {
+            rat->throwTimer -= GetFrameTime();
+            Vector2 direction = normalize(getDirection(entity->position, rat->throwPosition));
+            entity->velocity.x = direction.x * 300;
+            entity->velocity.y = direction.y * 300;
+            entity->position.x += entity->velocity.x * GetFrameTime();
+            entity->position.y += entity->velocity.y * GetFrameTime();
+            float w = entity->scale.x * SCALE_FACTOR + cosf(2.0f - rat->throwTimer * 8.0f) * 50;
+            float h = entity->scale.y * SCALE_FACTOR + cosf(2.0f - rat->throwTimer * 8.0f) * 50;
+            Rectangle sourceRec = (Rectangle) { (rat->type - 1) * 256, 0, ratTextureSpritesheet.width / 4.0f, ratTextureSpritesheet.height };
+
+            DrawTexturePro(ratTextureSpritesheet, sourceRec,
+                           (Rectangle) { entity->position.x, entity->position.y, w, h },
+                           (Vector2) { w * 0.5f, h * 0.5f }, entity->rotation - 90, WHITE);
             continue;
         }
         Vector2 direction = normalize(getDirection(entity->position, cheesePosition));
@@ -598,15 +655,31 @@ void UpdateRats(void) {
 
         float w = entity->scale.x * SCALE_FACTOR;
         float h = entity->scale.y * SCALE_FACTOR;
-        Rectangle sourceRec = (Rectangle) { (rat->type - 1) * 256, 0, ratTextureSpritesheet.width / 4, ratTextureSpritesheet.height };
+        Rectangle sourceRec = (Rectangle) { (rat->type - 1) * 256, 0, ratTextureSpritesheet.width / 4.0f, ratTextureSpritesheet.height };
 
         DrawTexturePro(ratTextureSpritesheet, sourceRec,
                        (Rectangle) { entity->position.x, entity->position.y, w, h },
                        (Vector2) { w * 0.5f, h * 0.5f }, entity->rotation - 90, WHITE);
 
+        if (distance(entity->position, player.position) < w && !currentRatOnPlayer) {
+            currentRatOnPlayer = rat;
+        }
+
         if (distance(entity->position, cheesePosition) < w) {
             cheese -= CHEESE_DECREASE_RATE * GetFrameTime() * rat->type;
         }
+    }
+
+    for (int i = 0; i < mutateParticlesCount; ++i) {
+        mutateParticles[i].position.x += rand() % 20 - 10;
+        mutateParticles[i].position.y += rand() % 20 - 10;
+
+        DrawCircle(mutateParticles[i].position.x, mutateParticles[i].position.y, 5, (Color) { 255, 255, 255, 255 - mutateParticlesTimer * 255 });
+    }
+    if (mutateParticlesTimer >= 1.0f) {
+        mutateParticlesCount = 0;
+    } else {
+        mutateParticlesTimer += GetFrameTime();
     }
 
     if (currentRatOnPowerGenerator == NULL) return;
@@ -648,6 +721,7 @@ void OnDropRat(Rat* rat) {
         Rat* otherRat = &enemies[i];
         Entity* otherEntity = otherRat->entity;
         if (otherRat->type == 4 || rat->type == 4) continue;
+        if (otherRat == currentRatOnPlayer || rat == currentRatOnPlayer) continue;
         if (otherRat == currentRatOnPowerGenerator || rat == currentRatOnPowerGenerator) continue;
 
         float distanceToOther = distance(rat->entity->position, otherEntity->position);
@@ -657,8 +731,24 @@ void OnDropRat(Rat* rat) {
             rat->type = highestType + 1;
             rat->entity->scale = (Vector2) { rat->type * 0.25f, rat->type * 0.25f };
             rat->isEnraged = rat->isEnraged || otherRat->isEnraged;
-
             DestroyRat(otherRat);
+
+            if (mutateParticlesCount > 0) {
+                free(mutateParticles);
+            }
+
+            mutateParticles = malloc(sizeof(Entity) * 10);
+            mutateParticlesCount = 10;
+            mutateParticlesTimer = 0.0f;
+
+            for (int j = 0; j < mutateParticlesCount; ++j) {
+                mutateParticles[j] = (Entity) {
+                        .position = rat->entity->position,
+                        .rotation = 0.0f,
+                        .scale = (Vector2) {0.25f, 0.25f},
+                        .velocity = (Vector2) {0.0f, 0.0f}
+                };
+            }
             return;
         }
     }
@@ -677,7 +767,7 @@ void OnDropRat(Rat* rat) {
 void UpdateMouseLogic(void) {
     if (!IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
         currentHandTexture = 0;
-        if (!IsMouseButtonUp(MOUSE_LEFT_BUTTON)) return;
+        if (!IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) return;
         if (currentDraggedRat != NULL) {
             OnDropRat(currentDraggedRat);
             currentDraggedRat = NULL;
@@ -687,7 +777,7 @@ void UpdateMouseLogic(void) {
         }
         return;
     }
-    if (currentDraggedRat != NULL) {
+    if (currentDraggedRat) {
         currentHandTexture = 1;
         currentDraggedRat->entity->position = GetMousePosition();
         sanity -= SANITY_DECREASE_RATE * GetFrameTime();
@@ -697,11 +787,13 @@ void UpdateMouseLogic(void) {
     if (isCheeseDragged) {
         currentHandTexture = 2;
         cheeseEntity.position = GetMousePosition();
+        sanity -= SANITY_DECREASE_RATE * GetFrameTime();
         return;
     }
 
     for (int i = 0; i < enemiesCount; i++) {
         Rat* rat = &enemies[i];
+        if (rat == currentRatOnPlayer || rat->throwTimer > 0.0f) continue;
         Entity* enemy = rat->entity;
         float distanceToMouse = distance(enemy->position, GetMousePosition());
         if (distanceToMouse < enemy->scale.x * SCALE_FACTOR) {
@@ -997,4 +1089,3 @@ int main(void) {
     CloseWindow();
     return 0;
 }
-#pragma clang diagnostic pop
