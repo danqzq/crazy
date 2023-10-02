@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "resources", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/resources/cheese.png", "start": 0, "end": 83945}, {"filename": "/resources/cutscene0.png", "start": 83945, "end": 339702}, {"filename": "/resources/cutscene0.psd", "start": 339702, "end": 1367114}, {"filename": "/resources/cutscene1.png", "start": 1367114, "end": 1500650}, {"filename": "/resources/cutscene1.psd", "start": 1500650, "end": 2041942}, {"filename": "/resources/elec.png", "start": 2041942, "end": 2046953}, {"filename": "/resources/falling.png", "start": 2046953, "end": 2108119}, {"filename": "/resources/fatrat.png", "start": 2108119, "end": 2130731}, {"filename": "/resources/hand.png", "start": 2130731, "end": 2137217}, {"filename": "/resources/hand_cheese.png", "start": 2137217, "end": 2144506}, {"filename": "/resources/hand_rat.png", "start": 2144506, "end": 2150668}, {"filename": "/resources/player_spritesheet.png", "start": 2150668, "end": 2207339}, {"filename": "/resources/power_generator.png", "start": 2207339, "end": 2222376}, {"filename": "/resources/rats.png", "start": 2222376, "end": 2305634}, {"filename": "/resources/scars1.png", "start": 2305634, "end": 2314839}, {"filename": "/resources/scars2.png", "start": 2314839, "end": 2333733}, {"filename": "/resources/spotlight.png", "start": 2333733, "end": 2434356}, {"filename": "/resources/spotlight.psd", "start": 2434356, "end": 3938426}, {"filename": "/resources/teeth.png", "start": 3938426, "end": 4023775}, {"filename": "/resources/walls.png", "start": 4023775, "end": 4221076}, {"filename": "/resources/walls.psd", "start": 4221076, "end": 4925497}], "remote_package_size": 4925497});
+    loadPackage({"files": [{"filename": "/resources/ambience.wav", "start": 0, "end": 3014700, "audio": 1}, {"filename": "/resources/bite.wav", "start": 3014700, "end": 3079176, "audio": 1}, {"filename": "/resources/blood.png", "start": 3079176, "end": 3085020}, {"filename": "/resources/boom.png", "start": 3085020, "end": 3100666}, {"filename": "/resources/cheese.png", "start": 3100666, "end": 3184611}, {"filename": "/resources/cheese_normal.png", "start": 3184611, "end": 3273716}, {"filename": "/resources/cheese_walk1.png", "start": 3273716, "end": 3383100}, {"filename": "/resources/cheese_walk2.png", "start": 3383100, "end": 3493904}, {"filename": "/resources/clock.wav", "start": 3493904, "end": 3969621, "audio": 1}, {"filename": "/resources/crazy.wav", "start": 3969621, "end": 5630473, "audio": 1}, {"filename": "/resources/cutscene0.png", "start": 5630473, "end": 5886230}, {"filename": "/resources/cutscene1.png", "start": 5886230, "end": 6019766}, {"filename": "/resources/elec.png", "start": 6019766, "end": 6024777}, {"filename": "/resources/elec.wav", "start": 6024777, "end": 8006953, "audio": 1}, {"filename": "/resources/end.png", "start": 8006953, "end": 8277594}, {"filename": "/resources/explosion.ogg", "start": 8277594, "end": 8295281, "audio": 1}, {"filename": "/resources/explosion.wav", "start": 8295281, "end": 8425757, "audio": 1}, {"filename": "/resources/explosive_rat.png", "start": 8425757, "end": 8441354}, {"filename": "/resources/falling.png", "start": 8441354, "end": 8502520}, {"filename": "/resources/fatrat.png", "start": 8502520, "end": 8525132}, {"filename": "/resources/fatrat_happy.png", "start": 8525132, "end": 8544734}, {"filename": "/resources/hand.png", "start": 8544734, "end": 8551220}, {"filename": "/resources/hand_cheese.png", "start": 8551220, "end": 8558509}, {"filename": "/resources/hand_rat.png", "start": 8558509, "end": 8564671}, {"filename": "/resources/music.mp3", "start": 8564671, "end": 12140448, "audio": 1}, {"filename": "/resources/nom.png", "start": 12140448, "end": 12153482}, {"filename": "/resources/nom.wav", "start": 12153482, "end": 12258946, "audio": 1}, {"filename": "/resources/player_spritesheet.png", "start": 12258946, "end": 12315617}, {"filename": "/resources/poof.png", "start": 12315617, "end": 12335244}, {"filename": "/resources/poof.wav", "start": 12335244, "end": 12403364, "audio": 1}, {"filename": "/resources/pop1.wav", "start": 12403364, "end": 12421070, "audio": 1}, {"filename": "/resources/pop2.flac", "start": 12421070, "end": 12430855}, {"filename": "/resources/pop2.wav", "start": 12430855, "end": 12442025, "audio": 1}, {"filename": "/resources/power_generator.png", "start": 12442025, "end": 12457062}, {"filename": "/resources/rats.png", "start": 12457062, "end": 12540320}, {"filename": "/resources/red_flash.png", "start": 12540320, "end": 15592945}, {"filename": "/resources/scars1.png", "start": 15592945, "end": 15602150}, {"filename": "/resources/scars2.png", "start": 15602150, "end": 15621044}, {"filename": "/resources/screaming.wav", "start": 15621044, "end": 15711044, "audio": 1}, {"filename": "/resources/sniff.wav", "start": 15711044, "end": 15884196, "audio": 1}, {"filename": "/resources/space_button.png", "start": 15884196, "end": 15898445}, {"filename": "/resources/splat.wav", "start": 15898445, "end": 16091159, "audio": 1}, {"filename": "/resources/spotlight.png", "start": 16091159, "end": 16191782}, {"filename": "/resources/squeak1.wav", "start": 16191782, "end": 16384828, "audio": 1}, {"filename": "/resources/squeak2.mp3", "start": 16384828, "end": 16391977, "audio": 1}, {"filename": "/resources/squeak2.wav", "start": 16391977, "end": 16430525, "audio": 1}, {"filename": "/resources/squeak3.wav", "start": 16430525, "end": 16450383, "audio": 1}, {"filename": "/resources/teeth.png", "start": 16450383, "end": 16535732}, {"filename": "/resources/tutorial1.png", "start": 16535732, "end": 16715302}, {"filename": "/resources/tutorial2.png", "start": 16715302, "end": 16899143}, {"filename": "/resources/tutorial3.png", "start": 16899143, "end": 17021024}, {"filename": "/resources/tutorial4.png", "start": 17021024, "end": 17167728}, {"filename": "/resources/walls.png", "start": 17167728, "end": 17365029}], "remote_package_size": 17365029});
 
   })();
 
@@ -1162,6 +1162,19 @@ function dbg(text) {
 // end include: runtime_debug.js
 // === Body ===
 
+var ASM_CONSTS = {
+  126139: () => { if (typeof window === 'undefined' || (window.AudioContext || window.webkitAudioContext) === undefined) { return 0; } if (typeof(window.miniaudio) === 'undefined') { window.miniaudio = { referenceCount: 0 }; miniaudio.devices = []; miniaudio.track_device = function(device) { for (var iDevice = 0; iDevice < miniaudio.devices.length; ++iDevice) { if (miniaudio.devices[iDevice] == null) { miniaudio.devices[iDevice] = device; return iDevice; } } miniaudio.devices.push(device); return miniaudio.devices.length - 1; }; miniaudio.untrack_device_by_index = function(deviceIndex) { miniaudio.devices[deviceIndex] = null; while (miniaudio.devices.length > 0) { if (miniaudio.devices[miniaudio.devices.length-1] == null) { miniaudio.devices.pop(); } else { break; } } }; miniaudio.untrack_device = function(device) { for (var iDevice = 0; iDevice < miniaudio.devices.length; ++iDevice) { if (miniaudio.devices[iDevice] == device) { return miniaudio.untrack_device_by_index(iDevice); } } }; miniaudio.get_device_by_index = function(deviceIndex) { return miniaudio.devices[deviceIndex]; }; miniaudio.unlock_event_types = (function(){ return ['touchstart', 'touchend', 'click']; })(); miniaudio.unlock = function() { for(var i = 0; i < miniaudio.devices.length; ++i) { var device = miniaudio.devices[i]; if (device != null && device.webaudio != null && device.state === 2 ) { device.webaudio.resume(); } } miniaudio.unlock_event_types.map(function(event_type) { document.removeEventListener(event_type, miniaudio.unlock, true); }); }; miniaudio.unlock_event_types.map(function(event_type) { document.addEventListener(event_type, miniaudio.unlock, true); }); } window.miniaudio.referenceCount++; return 1; },  
+ 127838: () => { if (typeof(window.miniaudio) !== 'undefined') { window.miniaudio.referenceCount--; if (window.miniaudio.referenceCount === 0) { delete window.miniaudio; } } },  
+ 127999: () => { return (navigator.mediaDevices !== undefined && navigator.mediaDevices.getUserMedia !== undefined); },  
+ 128103: () => { try { var temp = new (window.AudioContext || window.webkitAudioContext)(); var sampleRate = temp.sampleRate; temp.close(); return sampleRate; } catch(e) { return 0; } },  
+ 128274: ($0, $1, $2, $3, $4, $5) => { var channels = $0; var sampleRate = $1; var bufferSize = $2; var isCapture = $3; var pDevice = $4; var pAllocationCallbacks = $5; if (typeof(window.miniaudio) === 'undefined') { return -1; } var device = {}; device.webaudio = new (window.AudioContext || window.webkitAudioContext)({sampleRate:sampleRate}); device.webaudio.suspend(); device.state = 1; device.intermediaryBufferSizeInBytes = channels * bufferSize * 4; device.intermediaryBuffer = _ma_malloc_emscripten(device.intermediaryBufferSizeInBytes, pAllocationCallbacks); device.intermediaryBufferView = new Float32Array(Module.HEAPF32.buffer, device.intermediaryBuffer, device.intermediaryBufferSizeInBytes); device.scriptNode = device.webaudio.createScriptProcessor(bufferSize, (isCapture) ? channels : 0, (isCapture) ? 0 : channels); if (isCapture) { device.scriptNode.onaudioprocess = function(e) { if (device.intermediaryBuffer === undefined) { return; } if (device.intermediaryBufferView.length == 0) { device.intermediaryBufferView = new Float32Array(Module.HEAPF32.buffer, device.intermediaryBuffer, device.intermediaryBufferSizeInBytes); } for (var iChannel = 0; iChannel < e.outputBuffer.numberOfChannels; ++iChannel) { e.outputBuffer.getChannelData(iChannel).fill(0.0); } var sendSilence = false; if (device.streamNode === undefined) { sendSilence = true; } if (e.inputBuffer.numberOfChannels != channels) { console.log("Capture: Channel count mismatch. " + e.inputBufer.numberOfChannels + " != " + channels + ". Sending silence."); sendSilence = true; } var totalFramesProcessed = 0; while (totalFramesProcessed < e.inputBuffer.length) { var framesRemaining = e.inputBuffer.length - totalFramesProcessed; var framesToProcess = framesRemaining; if (framesToProcess > (device.intermediaryBufferSizeInBytes/channels/4)) { framesToProcess = (device.intermediaryBufferSizeInBytes/channels/4); } if (sendSilence) { device.intermediaryBufferView.fill(0.0); } else { for (var iFrame = 0; iFrame < framesToProcess; ++iFrame) { for (var iChannel = 0; iChannel < e.inputBuffer.numberOfChannels; ++iChannel) { device.intermediaryBufferView[iFrame*channels + iChannel] = e.inputBuffer.getChannelData(iChannel)[totalFramesProcessed + iFrame]; } } } _ma_device_process_pcm_frames_capture__webaudio(pDevice, framesToProcess, device.intermediaryBuffer); totalFramesProcessed += framesToProcess; } }; navigator.mediaDevices.getUserMedia({audio:true, video:false}) .then(function(stream) { device.streamNode = device.webaudio.createMediaStreamSource(stream); device.streamNode.connect(device.scriptNode); device.scriptNode.connect(device.webaudio.destination); }) .catch(function(error) { device.scriptNode.connect(device.webaudio.destination); }); } else { device.scriptNode.onaudioprocess = function(e) { if (device.intermediaryBuffer === undefined) { return; } if(device.intermediaryBufferView.length == 0) { device.intermediaryBufferView = new Float32Array(Module.HEAPF32.buffer, device.intermediaryBuffer, device.intermediaryBufferSizeInBytes); } var outputSilence = false; if (e.outputBuffer.numberOfChannels != channels) { console.log("Playback: Channel count mismatch. " + e.outputBufer.numberOfChannels + " != " + channels + ". Outputting silence."); outputSilence = true; return; } var totalFramesProcessed = 0; while (totalFramesProcessed < e.outputBuffer.length) { var framesRemaining = e.outputBuffer.length - totalFramesProcessed; var framesToProcess = framesRemaining; if (framesToProcess > (device.intermediaryBufferSizeInBytes/channels/4)) { framesToProcess = (device.intermediaryBufferSizeInBytes/channels/4); } _ma_device_process_pcm_frames_playback__webaudio(pDevice, framesToProcess, device.intermediaryBuffer); if (outputSilence) { for (var iChannel = 0; iChannel < e.outputBuffer.numberOfChannels; ++iChannel) { e.outputBuffer.getChannelData(iChannel).fill(0.0); } } else { for (var iChannel = 0; iChannel < e.outputBuffer.numberOfChannels; ++iChannel) { var outputBuffer = e.outputBuffer.getChannelData(iChannel); var intermediaryBuffer = device.intermediaryBufferView; for (var iFrame = 0; iFrame < framesToProcess; ++iFrame) { outputBuffer[totalFramesProcessed + iFrame] = intermediaryBuffer[iFrame*channels + iChannel]; } } } totalFramesProcessed += framesToProcess; } }; device.scriptNode.connect(device.webaudio.destination); } return miniaudio.track_device(device); },  
+ 132624: ($0) => { return miniaudio.get_device_by_index($0).webaudio.sampleRate; },  
+ 132690: ($0, $1, $2, $3) => { var device = miniaudio.get_device_by_index($0); var pAllocationCallbacks = $3; if (device.scriptNode !== undefined) { device.scriptNode.onaudioprocess = function(e) {}; device.scriptNode.disconnect(); device.scriptNode = undefined; } if (device.streamNode !== undefined) { device.streamNode.disconnect(); device.streamNode = undefined; } device.webaudio.close(); device.webaudio = undefined; if (device.intermediaryBuffer !== undefined) { _ma_free_emscripten(device.intermediaryBuffer, pAllocationCallbacks); device.intermediaryBuffer = undefined; device.intermediaryBufferView = undefined; device.intermediaryBufferSizeInBytes = undefined; } miniaudio.untrack_device_by_index($0); },  
+ 133376: ($0) => { var device = miniaudio.get_device_by_index($0); device.webaudio.resume(); device.state = 2; },  
+ 133472: ($0) => { var device = miniaudio.get_device_by_index($0); device.webaudio.resume(); device.state = 2; },  
+ 133568: ($0) => { var device = miniaudio.get_device_by_index($0); device.webaudio.suspend(); device.state = 1; },  
+ 133665: ($0) => { var device = miniaudio.get_device_by_index($0); device.webaudio.suspend(); device.state = 1; }
+};
 function GetCanvasWidth() { return canvas.clientWidth; }
 function GetCanvasHeight() { return canvas.clientHeight; }
 
@@ -4513,6 +4526,45 @@ function GetCanvasHeight() { return canvas.clientHeight; }
 
   var nowIsMonotonic = true;;
   var __emscripten_get_now_is_monotonic = () => nowIsMonotonic;
+
+  var readEmAsmArgsArray = [];
+  var readEmAsmArgs = (sigPtr, buf) => {
+      // Nobody should have mutated _readEmAsmArgsArray underneath us to be something else than an array.
+      assert(Array.isArray(readEmAsmArgsArray));
+      // The input buffer is allocated on the stack, so it must be stack-aligned.
+      assert(buf % 16 == 0);
+      readEmAsmArgsArray.length = 0;
+      var ch;
+      // Most arguments are i32s, so shift the buffer pointer so it is a plain
+      // index into HEAP32.
+      while (ch = HEAPU8[sigPtr++]) {
+        var chr = String.fromCharCode(ch);
+        var validChars = ['d', 'f', 'i', 'p'];
+        assert(validChars.includes(chr), `Invalid character ${ch}("${chr}") in readEmAsmArgs! Use only [${validChars}], and do not specify "v" for void return argument.`);
+        // Floats are always passed as doubles, so all types except for 'i'
+        // are 8 bytes and require alignment.
+        var wide = (ch != 105);
+        wide &= (ch != 112);
+        buf += wide && (buf % 8) ? 4 : 0;
+        readEmAsmArgsArray.push(
+          // Special case for pointers under wasm64 or CAN_ADDRESS_2GB mode.
+          ch == 112 ? HEAPU32[((buf)>>2)] :
+          ch == 105 ?
+            HEAP32[((buf)>>2)] :
+            HEAPF64[((buf)>>3)]
+        );
+        buf += wide ? 8 : 4;
+      }
+      return readEmAsmArgsArray;
+    };
+  var runEmAsmFunction = (code, sigPtr, argbuf) => {
+      var args = readEmAsmArgs(sigPtr, argbuf);
+      if (!ASM_CONSTS.hasOwnProperty(code)) abort(`No EM_ASM constant found at address ${code}`);
+      return ASM_CONSTS[code].apply(null, args);
+    };
+  var _emscripten_asm_const_int = (code, sigPtr, argbuf) => {
+      return runEmAsmFunction(code, sigPtr, argbuf);
+    };
 
   var _emscripten_date_now = () => Date.now();
 
@@ -10108,6 +10160,8 @@ var wasmImports = {
   /** @export */
   _emscripten_get_now_is_monotonic: __emscripten_get_now_is_monotonic,
   /** @export */
+  emscripten_asm_const_int: _emscripten_asm_const_int,
+  /** @export */
   emscripten_date_now: _emscripten_date_now,
   /** @export */
   emscripten_get_element_css_size: _emscripten_get_element_css_size,
@@ -10643,6 +10697,10 @@ var _UploadNewEntry = Module['_UploadNewEntry'] = createExportWrapper('UploadNew
 var _free = createExportWrapper('free');
 var _main = Module['_main'] = createExportWrapper('main');
 var _fflush = Module['_fflush'] = createExportWrapper('fflush');
+var _ma_malloc_emscripten = Module['_ma_malloc_emscripten'] = createExportWrapper('ma_malloc_emscripten');
+var _ma_free_emscripten = Module['_ma_free_emscripten'] = createExportWrapper('ma_free_emscripten');
+var _ma_device_process_pcm_frames_capture__webaudio = Module['_ma_device_process_pcm_frames_capture__webaudio'] = createExportWrapper('ma_device_process_pcm_frames_capture__webaudio');
+var _ma_device_process_pcm_frames_playback__webaudio = Module['_ma_device_process_pcm_frames_playback__webaudio'] = createExportWrapper('ma_device_process_pcm_frames_playback__webaudio');
 var ___errno_location = createExportWrapper('__errno_location');
 var _emscripten_stack_init = () => (_emscripten_stack_init = wasmExports['emscripten_stack_init'])();
 var _emscripten_stack_get_free = () => (_emscripten_stack_get_free = wasmExports['emscripten_stack_get_free'])();
@@ -10661,6 +10719,11 @@ var dynCall_viiiii = Module['dynCall_viiiii'] = createExportWrapper('dynCall_vii
 var dynCall_viiii = Module['dynCall_viiii'] = createExportWrapper('dynCall_viiii');
 var dynCall_vidd = Module['dynCall_vidd'] = createExportWrapper('dynCall_vidd');
 var dynCall_ii = Module['dynCall_ii'] = createExportWrapper('dynCall_ii');
+var dynCall_iii = Module['dynCall_iii'] = createExportWrapper('dynCall_iii');
+var dynCall_iiiii = Module['dynCall_iiiii'] = createExportWrapper('dynCall_iiiii');
+var dynCall_iiiiiii = Module['dynCall_iiiiiii'] = createExportWrapper('dynCall_iiiiiii');
+var dynCall_jii = Module['dynCall_jii'] = createExportWrapper('dynCall_jii');
+var dynCall_iiiji = Module['dynCall_iiiji'] = createExportWrapper('dynCall_iiiji');
 var dynCall_vffff = Module['dynCall_vffff'] = createExportWrapper('dynCall_vffff');
 var dynCall_vf = Module['dynCall_vf'] = createExportWrapper('dynCall_vf');
 var dynCall_viiiiiiii = Module['dynCall_viiiiiiii'] = createExportWrapper('dynCall_viiiiiiii');
@@ -10668,7 +10731,6 @@ var dynCall_viiiiiiiii = Module['dynCall_viiiiiiiii'] = createExportWrapper('dyn
 var dynCall_i = Module['dynCall_i'] = createExportWrapper('dynCall_i');
 var dynCall_vff = Module['dynCall_vff'] = createExportWrapper('dynCall_vff');
 var dynCall_viiiiiii = Module['dynCall_viiiiiii'] = createExportWrapper('dynCall_viiiiiii');
-var dynCall_iii = Module['dynCall_iii'] = createExportWrapper('dynCall_iii');
 var dynCall_vfi = Module['dynCall_vfi'] = createExportWrapper('dynCall_vfi');
 var dynCall_viif = Module['dynCall_viif'] = createExportWrapper('dynCall_viif');
 var dynCall_vif = Module['dynCall_vif'] = createExportWrapper('dynCall_vif');
@@ -10682,8 +10744,8 @@ var _asyncify_start_unwind = createExportWrapper('asyncify_start_unwind');
 var _asyncify_stop_unwind = createExportWrapper('asyncify_stop_unwind');
 var _asyncify_start_rewind = createExportWrapper('asyncify_start_rewind');
 var _asyncify_stop_rewind = createExportWrapper('asyncify_stop_rewind');
-var ___start_em_js = Module['___start_em_js'] = 94560;
-var ___stop_em_js = Module['___stop_em_js'] = 94635;
+var ___start_em_js = Module['___start_em_js'] = 126064;
+var ___stop_em_js = Module['___stop_em_js'] = 126139;
 
 // include: postamble.js
 // === Auto-generated postamble setup entry stuff ===
@@ -10748,7 +10810,7 @@ var missingLibrarySymbols = [
   'getCallstack',
   'emscriptenLog',
   'convertPCtoSourceLocation',
-  'readEmAsmArgs',
+  'runMainThreadEmAsm',
   'jstoi_s',
   'getExecutableName',
   'listenOnce',
@@ -10904,6 +10966,8 @@ var unexportedSymbols = [
   'warnOnce',
   'UNWIND_CACHE',
   'readEmAsmArgsArray',
+  'readEmAsmArgs',
+  'runEmAsmFunction',
   'jstoi_q',
   'handleException',
   'runtimeKeepalivePush',
